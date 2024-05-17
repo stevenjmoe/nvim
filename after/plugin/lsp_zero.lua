@@ -13,6 +13,8 @@ lsp_zero.on_attach(function(client, bufnr)
 	vim.keymap.set('n', '<C-h>', vim.lsp.buf.signature_help)
 end)
 
+require 'mason'.setup()
+
 -- Lua
 require 'lspconfig'.lua_ls.setup {
 	on_init = function(client)
@@ -45,3 +47,6 @@ require 'lspconfig'.lua_ls.setup {
 		Lua = {}
 	}
 }
+
+require 'lspconfig'.svelte.setup({})
+require 'lspconfig'.tailwindcss.setup({})
