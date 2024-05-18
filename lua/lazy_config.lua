@@ -15,6 +15,19 @@ require("lazy").setup({
 	-- color scheme
 	"rebelot/kanagawa.nvim",
 
+	{ 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
+	{ 'williamboman/mason.nvim' },
+	{ 'williamboman/mason-lspconfig.nvim' },
+	{ 'neovim/nvim-lspconfig' },
+	{ 'hrsh7th/cmp-nvim-lsp' },
+	{ 'hrsh7th/nvim-cmp' },
+	{ 'L3MON4D3/LuaSnip' },
+
+	{ 'hrsh7th/cmp-buffer' },
+	{ 'hrsh7th/cmp-path' },
+	{ 'hrsh7th/cmp-cmdline' },
+
+
 	-- telescope
 	{
 		'nvim-telescope/telescope.nvim',
@@ -22,25 +35,8 @@ require("lazy").setup({
 		dependencies = { 'nvim-lua/plenary.nvim' }
 	},
 
-	-- treesitter
-	{ "nvim-treesitter/nvim-treesitter",  build = ":TSUpdate" },
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
-	-- mason
-	{ 'williamboman/mason.nvim' },
-	{ 'williamboman/mason-lspconfig.nvim' },
-
-	-- lsp and cmp
-	{
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v3.x',
-	},
-	{ 'neovim/nvim-lspconfig' },
-	{ 'hrsh7th/cmp-nvim-lsp' },
-	{ 'hrsh7th/nvim-cmp' },
-	{ 'hrsh7th/cmp-buffer' },
-	{ 'hrsh7th/cmp-path' },
-	{ 'hrsh7th/cmp-cmdline' },
-	{ 'L3MON4D3/LuaSnip' },
 
 	-- git
 	{ 'tpope/vim-fugitive' },
