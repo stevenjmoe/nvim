@@ -11,6 +11,9 @@ lsp_zero.on_attach(function(client, bufnr)
 	vim.keymap.set('n', '<leader>fd', vim.lsp.buf.format)
 	vim.keymap.set('n', 'H', vim.lsp.buf.hover)
 	vim.keymap.set('n', '<C-h>', vim.lsp.buf.signature_help)
+
+	vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition)
+	vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation)
 end)
 
 require('mason').setup({})
