@@ -11,3 +11,6 @@ vim.keymap.set("n", "<leader>[d", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "<leader>]d", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 vim.keymap.set("n", "<leader>le", vim.diagnostic.setloclist)
+
+vim.keymap.set('n', '<C-k>', "<cmd>cnext<CR>zz")
+vim.keymap.set('n', '<C-j>', "<cmd>cprev<CR>zz")

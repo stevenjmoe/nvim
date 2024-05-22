@@ -13,10 +13,9 @@ vim.keymap.set('n', '<leader>ps', builtin.spell_suggest, {})
 vim.keymap.set('n', '<leader>p/', builtin.current_buffer_fuzzy_find, {})
 
 -- LSP picker mappings
-vim.keymap.set('n', '<leader>pr', builtin.lsp_references, {})
-vim.keymap.set('n', '<leader>pdi', builtin.diagnostics, {})
-vim.keymap.set('n', '<leader>gi', builtin.lsp_implementations, {})
-vim.keymap.set('n', '<leader>gd', builtin.lsp_definitions, {})
-vim.keymap.set('n', '<leader>pd', builtin.lsp_definitions, {})
+vim.keymap.set('n', '<leader>gr', builtin.lsp_references, {})
+vim.keymap.set('n', '<leader>pe', builtin.diagnostics, {})
+vim.keymap.set('n', '<leader>li', builtin.lsp_implementations, {})
+vim.keymap.set('n', '<leader>ld', builtin.lsp_definitions, {})
 
 require('telescope').setup()
