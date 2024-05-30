@@ -38,4 +38,10 @@ require("lazy").setup({
 
 	-- git
 	{ 'tpope/vim-fugitive' },
+	{
+		"supermaven-inc/supermaven-nvim",
+		config = function()
+			require("supermaven-nvim").setup({})
+		end,
+	},
 })
