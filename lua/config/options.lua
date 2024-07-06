@@ -7,3 +7,4 @@ vim.opt.smarttab = true
 vim.opt.cc = "80"
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
+vim.opt.rtp:prepend("~/.opam/default/share/ocp-indent/vim")

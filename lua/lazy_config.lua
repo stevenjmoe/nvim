@@ -44,4 +44,5 @@ require("lazy").setup({
 			require("supermaven-nvim").setup({})
 		end,
 	},
+	{ 'tpope/vim-fireplace' },
 })
