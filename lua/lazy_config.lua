@@ -44,5 +44,13 @@ require("lazy").setup({
 			require("supermaven-nvim").setup({})
 		end,
 	},
-	{ 'tpope/vim-fireplace' },
+	{
+		"ionide/Ionide-vim",
+		ft = "fsharp",
+		dependencies = {
+			"neovim/nvim-lspconfig",
+		},
+		config = function()
+		end,
+	},
 })

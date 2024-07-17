@@ -1,5 +1,6 @@
 require("supermaven-nvim").setup({
-	disable_keymaps = true
+	disable_keymaps = true,
+	color = "#ffffff",
 })
 
 M.expand = function(fallback)
