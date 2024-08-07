@@ -35,15 +35,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	callback = function()
 		vim.bo.expandtab = true -- Use spaces instead of tabs
 		vim.bo.shiftwidth = 4 -- Set indentation width to 4 spaces
-		vim.bo.tabstop = 4  -- Set tab width to 4 spaces
+		vim.bo.tabstop = 4 -- Set tab width to 4 spaces
 		vim.bo.softtabstop = 4 -- Set soft tab stop to 4 spaces
-	end,
-})
-
--- Optionally, you can add a key mapping to retab the file
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "fsharp",
-	callback = function()
-		vim.keymap.set("n", "<leader>rt", ":retab<CR>", { buffer = true, silent = true })
 	end,
 })
