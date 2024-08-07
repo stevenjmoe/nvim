@@ -1,3 +1,22 @@
+local custom_format = function()
+	if vim.bo.filetype == "templ" then
+		local bufnr = vim.api.nvim_get_current_buf()
+		local filename = vim.api.nvim_buf_get_name(bufnr)
+		local cmd = "templ fmt " .. vim.fn.shellescape(filename)
+
+		vim.fn.jobstart(cmd, {
+			on_exit = function()
+				-- Reload the buffer only if it's still the current buffer
+				if vim.api.nvim_get_current_buf() == bufnr then
+					vim.cmd('e!')
+				end
+			end,
+		})
+	else
+		vim.lsp.buf.format()
+	end
+end
+
 vim.api.nvim_create_autocmd('LspAttach', {
 	desc = 'LSP actions',
 	callback = function(event)
@@ -9,7 +28,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
 		vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
 		vim.keymap.set('i', '<C-space>', vim.lsp.buf.completion)
-		vim.keymap.set('n', '<leader>fd', vim.lsp.buf.format)
+		vim.keymap.set('n', '<leader>fd', custom_format)
 		vim.keymap.set('n', 'H', vim.lsp.buf.hover)
 		vim.keymap.set('n', '<C-h>', vim.lsp.buf.signature_help)
 		vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help)
@@ -65,6 +84,35 @@ require('mason-lspconfig').setup({
 				},
 			})
 		end,
+		html = function()
+			require('lspconfig').html.setup({
+				capabilities = lsp_capabilities,
+				filetypes = { 'html', 'templ' },
+			})
+		end,
+		htmx = function()
+			require('lspconfig').htmx.setup({
+				capabilities = lsp_capabilities,
+				filetypes = { 'html', 'templ' },
+			})
+		end,
+		tailwindcss = function()
+			require('lspconfig').tailwindcss.setup({
+				filetypes = { "templ", "astro", "javascript", "typescript", "react", "svelte" },
+				settings = {
+					tailwindCSS = {
+						includeLanguages = {
+							templ = "html",
+						},
+					}
+				}
+			})
+		end,
+		gopls = function()
+			require('lspconfig').gopls.setup({
+				capabilities = lsp_capabilities,
+			})
+		end
 	},
 })
 
