@@ -1,8 +1,10 @@
-vim.g['fsharp#fsautocomplete_command'] = {
-	'dotnet',
-	'fsautocomplete',
-	'--background-service-enabled'
-}
+-- leave this commented for linux (global tool install)
+-- uncomment for windows
+--vim.g['fsharp#fsautocomplete_command'] = {
+--	'dotnet',
+--	'fsautocomplete',
+--	'--background-service-enabled'
+--}
 
 vim.g['fsharp#lsp_auto_setup'] = 0
 vim.g['fsharp#exclude_project_directories'] = { 'paket-files' }
