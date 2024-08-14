@@ -53,4 +53,5 @@ require("lazy").setup({
 		config = function()
 		end,
 	},
+	"mbbill/undotree"
 })
