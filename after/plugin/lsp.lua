@@ -1,22 +1,3 @@
-local custom_format = function()
-	if vim.bo.filetype == "templ" then
-		local bufnr = vim.api.nvim_get_current_buf()
-		local filename = vim.api.nvim_buf_get_name(bufnr)
-		local cmd = "templ fmt " .. vim.fn.shellescape(filename)
-
-		vim.fn.jobstart(cmd, {
-			on_exit = function()
-				-- Reload the buffer only if it's still the current buffer
-				if vim.api.nvim_get_current_buf() == bufnr then
-					vim.cmd('e!')
-				end
-			end,
-		})
-	else
-		vim.lsp.buf.format()
-	end
-end
-
 vim.api.nvim_create_autocmd('LspAttach', {
 	desc = 'LSP actions',
 	callback = function(event)
@@ -28,7 +9,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
 		vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
 		vim.keymap.set('i', '<C-space>', vim.lsp.buf.completion)
-		vim.keymap.set('n', '<leader>fd', custom_format)
+		vim.keymap.set('n', '<leader>fd', vim.lsp.buf.format)
 		vim.keymap.set('n', 'H', vim.lsp.buf.hover)
 		vim.keymap.set('n', '<C-h>', vim.lsp.buf.signature_help)
 		vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help)
@@ -36,18 +17,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition)
 		vim.keymap.set('n', '<leader>gD', vim.lsp.buf.declaration)
 		vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation)
-
-
-		--vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-		--vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-		--vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-		--vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-		--vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-		--vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-		--vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-		--vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-		--vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-		--vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 	end
 })
 
@@ -61,12 +30,10 @@ end
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-	ensure_installed = {},
 	handlers = {
 		default_setup,
 		lua_ls = function()
 			require('lspconfig').lua_ls.setup({
-				capabilities = lsp_capabilities,
 				settings = {
 					Lua = {
 						runtime = {
@@ -86,13 +53,11 @@ require('mason-lspconfig').setup({
 		end,
 		html = function()
 			require('lspconfig').html.setup({
-				capabilities = lsp_capabilities,
 				filetypes = { 'html', 'templ' },
 			})
 		end,
 		htmx = function()
 			require('lspconfig').htmx.setup({
-				capabilities = lsp_capabilities,
 				filetypes = { 'html', 'templ' },
 			})
 		end,
@@ -109,8 +74,16 @@ require('mason-lspconfig').setup({
 			})
 		end,
 		gopls = function()
-			require('lspconfig').gopls.setup({
-				capabilities = lsp_capabilities,
+			require('lspconfig').gopls.setup()
+		end,
+		ocamllsp = function()
+			require('lspconfig').ocamllsp.setup({
+				settings = {
+					extendedHover = { enable = true },
+					codelens = { enable = true },
+					inlayHints = { enable = true },
+					syntaxDocumentation = { enable = true },
+				},
 			})
 		end
 	},
@@ -125,8 +98,9 @@ cmp.setup({
 		end,
 	},
 	window = {
-		--completion = cmp.config.window.bordered(),
-		--documentation = cmp.config.window.bordered(),
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+		diagnostics = cmp.config.window.bordered(),
 	},
 	mapping = cmp.mapping.preset.insert({
 		['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -138,7 +112,6 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' }, -- For luasnip users.
-		{ name = 'supermaven' },
 	}, {
 		{ name = 'buffer' },
 	}),
@@ -161,16 +134,4 @@ cmp.setup.cmdline(':', {
 		{ name = 'cmdline' }
 	}),
 	matching = { disallow_symbol_nonprefix_matching = false }
-})
-
--- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
---require('lspconfig').elixirls.setup({
---	capabilities = capabilities
---})
-
-local lspconfig = require('lspconfig')
-require('ionide').setup({
-	autostart = true,
-	capabilities = capabilities,
 })

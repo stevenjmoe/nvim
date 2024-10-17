@@ -17,7 +17,7 @@ require("lazy").setup({
 
 	{ 'williamboman/mason.nvim' },
 	{ 'williamboman/mason-lspconfig.nvim' },
-	{ 'neovim/nvim-lspconfig' },
+	{ "neovim/nvim-lspconfig" },
 	{ 'hrsh7th/cmp-nvim-lsp' },
 	{ 'hrsh7th/nvim-cmp' },
 	{ 'L3MON4D3/LuaSnip' },
@@ -25,7 +25,6 @@ require("lazy").setup({
 	{ 'hrsh7th/cmp-buffer' },
 	{ 'hrsh7th/cmp-path' },
 	{ 'hrsh7th/cmp-cmdline' },
-
 
 	-- telescope
 	{
@@ -38,20 +37,5 @@ require("lazy").setup({
 
 	-- git
 	{ 'tpope/vim-fugitive' },
-	{
-		"supermaven-inc/supermaven-nvim",
-		config = function()
-			require("supermaven-nvim").setup({})
-		end,
-	},
-	{
-		"ionide/Ionide-vim",
-		ft = "fsharp",
-		dependencies = {
-			"neovim/nvim-lspconfig",
-		},
-		config = function()
-		end,
-	},
-	"mbbill/undotree"
+	"mbbill/undotree",
 })
