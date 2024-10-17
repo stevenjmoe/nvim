@@ -26,7 +26,6 @@ require("lazy").setup({
 	{ 'hrsh7th/cmp-path' },
 	{ 'hrsh7th/cmp-cmdline' },
 
-	-- telescope
 	{
 		'nvim-telescope/telescope.nvim',
 		branch = '0.1.x',
@@ -38,4 +37,5 @@ require("lazy").setup({
 	-- git
 	{ 'tpope/vim-fugitive' },
 	"mbbill/undotree",
+	{ 'WhoIsSethDaniel/mason-tool-installer.nvim' }
 })
