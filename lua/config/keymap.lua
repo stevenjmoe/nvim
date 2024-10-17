@@ -19,3 +19,12 @@ vim.keymap.set("n", "<space>i", function()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = 0 }, { bufnr = 0 })
 	print(vim.lsp.inlay_hint.is_enabled { bufnr = 0 })
 end)
+
+-- todo comments
+vim.keymap.set("n", "]t", function()
+	require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+vim.keymap.set("n", "[t", function()
+	require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
