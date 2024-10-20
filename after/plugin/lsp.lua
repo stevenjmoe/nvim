@@ -45,6 +45,16 @@ local servers = {
 			inlayHints = { enable = true },
 			syntaxDocumentation = { enable = true },
 		},
+
+		filetypes = {
+			"ocaml",
+			"ocaml.interface",
+			"ocaml.menhir",
+			"ocaml.cram",
+			"ocaml.mlx",
+			"ocaml.ocamllex",
+			"reason",
+		}
 	},
 	ts_ls = {
 		settings = {
@@ -178,8 +188,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set('i', '<C-space>', vim.lsp.buf.completion)
 		vim.keymap.set('n', '<leader>fd', vim.lsp.buf.format)
 		vim.keymap.set('n', 'H', vim.lsp.buf.hover)
-		vim.keymap.set('n', '<C-h>', vim.lsp.buf.signature_help)
-		vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help)
+		vim.keymap.set('n', '<C-H>', vim.lsp.buf.signature_help)
+		vim.keymap.set('i', '<C-H>', vim.lsp.buf.signature_help)
 
 		vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition)
 		vim.keymap.set('n', '<leader>gD', vim.lsp.buf.declaration)
