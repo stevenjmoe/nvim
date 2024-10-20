@@ -1,4 +1,5 @@
 vim.opt.relativenumber = true
+vim.opt.nu = true
 vim.opt.hlsearch = false
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
@@ -26,3 +27,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 		vim.highlight.on_yank()
 	end,
 })
+
+vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro rnu"
