@@ -84,6 +84,15 @@ local servers = {
 	},
 	gopls = {},
 	svelte = {},
+	rust_analyzer = {},
+	omnisharp = {
+		cmd = {
+			"dotnet",
+
+			vim.fn.stdpath("data") .. "/mason/packages/omnisharp/libexec/OmniSharp.dll",
+			"--languageserver",
+		},
+	}
 }
 
 local ensure_installed = {
