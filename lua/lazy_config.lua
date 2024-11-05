@@ -80,34 +80,7 @@ require("lazy").setup({
 		},
 		ft = { "fsharp" },
 		build = function()
-			-- Ensure FSAC is installed
 			vim.fn.system({ "dotnet", "tool", "install", "--global", "fsautocomplete" })
 		end,
-		config = function()
-			-- Ionide configuration
-			vim.g.fsharp_automatic_sln_loading = 1
-			vim.g.fsharp_map_namespaces = 1
-			vim.g.fsharp_map_typecheck = 1
-			vim.g.fsharp_map_gotodecl = 1
-			vim.g.fsharp_map_gotonext = 1
-
-			-- Additional Ionide-specific key mappings
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = "fsharp",
-				callback = function()
-					vim.bo.expandtab = true -- Use spaces instead of tabs
-					vim.bo.shiftwidth = 4 -- Number of spaces for each indentation level
-					vim.bo.softtabstop = 4 -- Number of spaces a tab counts for while editing
-					vim.bo.tabstop = 4
-					--local opts = { noremap = true, silent = true, buffer = true }
-					--vim.keymap.set("n", "<leader>fs", ":FSharpLoadProject<CR>", opts)
-					--vim.keymap.set("n", "<leader>fp", ":FSharpParseProject<CR>", opts)
-					--vim.keymap.set("n", "<leader>ft", ":FSharpToggleTypeSignature<CR>", opts)
-					--vim.keymap.set("n", "<leader>fd", ":FSharpGoToDeclaration<CR>", opts)
-					--vim.keymap.set("n", "<leader>fi", ":FSharpFindImplementations<CR>", opts)
-					--vim.keymap.set("n", "<leader>fr", ":FSharpFindReferences<CR>", opts)
-				end
-			})
-		end
-	},
+	}
 })

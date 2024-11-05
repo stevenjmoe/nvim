@@ -92,7 +92,8 @@ local servers = {
 			vim.fn.stdpath("data") .. "/mason/packages/omnisharp/libexec/OmniSharp.dll",
 			"--languageserver",
 		},
-	}
+	},
+	fsautocomplete = {}
 }
 
 local ensure_installed = {
