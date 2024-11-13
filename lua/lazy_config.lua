@@ -82,5 +82,9 @@ require("lazy").setup({
 		build = function()
 			vim.fn.system({ "dotnet", "tool", "install", "--global", "fsautocomplete" })
 		end,
+	},
+	{
+		'rescript-lang/vim-rescript',
+		tag = "v2.1.0"
 	}
 })
