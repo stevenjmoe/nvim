@@ -78,3 +78,6 @@ end
 dap.listeners.before.event_exited.dapui_config = function()
 	dapui.close()
 end
+
+-- dapui keymaps
+vim.keymap.set({ 'v', 'n' }, '<Leader>de', function() dapui.eval() end)
