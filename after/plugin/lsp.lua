@@ -1,6 +1,8 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
+require('flutter-tools').setup {}
+
 local servers = {
 	lua_ls = {
 		settings = {
@@ -86,15 +88,18 @@ local servers = {
 	svelte = {},
 	rust_analyzer = {},
 	omnisharp = {
-		cmd = {
-			"dotnet",
-
-			vim.fn.stdpath("data") .. "/mason/packages/omnisharp/libexec/OmniSharp.dll",
-			"--languageserver",
-		},
+		cmd = { "dotnet", "/home/steven/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp.dll" }
 	},
 	fsautocomplete = {},
 	rescriptls = {},
+	-- omnisharp = {
+	-- 	cmd = {
+	-- 		"dotnet",
+
+	-- 		vim.fn.stdpath("data") .. "/mason/packages/omnisharp/libexec/OmniSharp.dll",
+	-- 		"--languageserver",
+	-- 	},
+	-- },
 }
 
 local ensure_installed = {

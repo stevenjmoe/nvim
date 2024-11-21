@@ -86,5 +86,23 @@ require("lazy").setup({
 	{
 		'rescript-lang/vim-rescript',
 		tag = "v2.1.0"
+	},
+	{
+		'nvim-flutter/flutter-tools.nvim',
+		lazy = false,
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			'stevearc/dressing.nvim', -- optional for vim.ui.select
+		},
+		config = true,
+	},
+	{ 'mfussenegger/nvim-dap' },
+	{
+		"rcarriga/nvim-dap-ui",
+		dependencies =
+		{
+			"mfussenegger/nvim-dap",
+			"nvim-neotest/nvim-nio"
+		}
 	}
 })
