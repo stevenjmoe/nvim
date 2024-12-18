@@ -12,9 +12,12 @@ vim.keymap.set("n", "<leader>]d", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 vim.keymap.set("n", "<leader>le", vim.diagnostic.setloclist)
 
+-- Quickfix navigation
+vim.keymap.set('n', '<C-Down>', "<cmd>cnext<CR>zz")
+vim.keymap.set('n', '<C-Up>', "<cmd>cprev<CR>zz")
+
 vim.keymap.set("n", "<space>i", function()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = 0 }, { bufnr = 0 })
-	print(vim.lsp.inlay_hint.is_enabled { bufnr = 0 })
 end)
 
 -- todo comments
