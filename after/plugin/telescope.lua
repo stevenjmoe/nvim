@@ -1,4 +1,5 @@
 local builtin = require('telescope.builtin')
+
 vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
 vim.keymap.set('n', '<leader>pg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>pz', builtin.grep_string, {})
@@ -27,4 +28,42 @@ vim.keymap.set('n', '<leader>pe', builtin.diagnostics, {})
 vim.keymap.set('n', '<leader>li', builtin.lsp_implementations, {})
 vim.keymap.set('n', '<leader>ld', builtin.lsp_definitions, {})
 
-require('telescope').setup()
+--builtin.find_files(require('telescope.themes').get_dropdown({}))
+
+require('telescope').setup {
+	defaults = {
+		mappings = {
+			i = {
+				["<C-h>"] = require('telescope.actions').select_horizontal,
+				["<C-s>"] = require('telescope.actions').select_vertical,
+			},
+			n = {
+				["<C-h>"] = require('telescope.actions').select_horizontal,
+				["<C-s>"] = require('telescope.actions').select_vertical,
+			},
+		}
+	},
+	pickers = {
+		find_files = {
+			theme = "dropdown"
+		},
+		live_grep = {
+			theme = "dropdown"
+		},
+		grep_string = {
+			theme = "dropdown"
+		},
+		buffers = {
+			theme = "dropdown"
+		},
+		keymaps = {
+			theme = "dropdown"
+		},
+		quickfix = {
+			theme = "dropdown"
+		},
+		current_buffer_fuzzy_find = {
+			theme = "dropdown"
+		},
+	},
+}
