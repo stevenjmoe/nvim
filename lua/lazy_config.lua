@@ -18,13 +18,8 @@ require("lazy").setup({
 	{ 'williamboman/mason.nvim' },
 	{ 'williamboman/mason-lspconfig.nvim' },
 	{ "neovim/nvim-lspconfig" },
-	{ 'hrsh7th/cmp-nvim-lsp' },
-	{ 'hrsh7th/nvim-cmp' },
 	{ 'L3MON4D3/LuaSnip' },
 
-	{ 'hrsh7th/cmp-buffer' },
-	{ 'hrsh7th/cmp-path' },
-	{ 'hrsh7th/cmp-cmdline' },
 
 	{
 		'nvim-telescope/telescope.nvim',
@@ -104,5 +99,37 @@ require("lazy").setup({
 			"mfussenegger/nvim-dap",
 			"nvim-neotest/nvim-nio"
 		}
+	},
+	{
+		'saghen/blink.cmp',
+		dependencies = 'rafamadriz/friendly-snippets',
+
+		version = 'v0.*',
+		opts = {
+			-- 'default' for mappings similar to built-in completion
+			-- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
+			-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
+			-- see the "default configuration" section below for full documentation on how to define
+			-- your own keymap.
+			keymap = { preset = 'default' },
+
+			appearance = {
+				use_nvim_cmp_as_default = true,
+				nerd_font_variant = 'mono'
+			},
+			sources = {
+				default = { 'lsp', 'path', 'snippets', 'buffer' },
+			},
+
+			signature = { enabled = true }
+		},
+	},
+	{
+		'stevearc/oil.nvim',
+		---@module 'oil'
+		---@type oil.SetupOpts
+		opts = {},
+		-- Optional dependencies
+		dependencies = { { "echasnovski/mini.icons", opts = {} } },
 	}
 })
