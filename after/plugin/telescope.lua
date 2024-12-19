@@ -13,6 +13,7 @@ vim.keymap.set('n', '<leader>pq', builtin.quickfix, {})
 vim.keymap.set('n', '<leader>px', builtin.registers, {})
 vim.keymap.set('n', '<leader>ps', builtin.spell_suggest, {})
 vim.keymap.set('n', '<leader>p/', builtin.current_buffer_fuzzy_find, {})
+vim.keymap.set('n', '<leader>pt', "<CMD>TodoTelescope<CR>", {})
 
 vim.keymap.set('n', '<leader>ds', builtin.lsp_document_symbols, {})
 vim.keymap.set('n', '<leader>ws', builtin.lsp_dynamic_workspace_symbols, {})
@@ -27,8 +28,6 @@ vim.keymap.set('n', '<leader>gr', builtin.lsp_references, {})
 vim.keymap.set('n', '<leader>pe', builtin.diagnostics, {})
 vim.keymap.set('n', '<leader>li', builtin.lsp_implementations, {})
 vim.keymap.set('n', '<leader>ld', builtin.lsp_definitions, {})
-
---builtin.find_files(require('telescope.themes').get_dropdown({}))
 
 require('telescope').setup {
 	defaults = {
