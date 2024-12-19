@@ -20,7 +20,10 @@ vim.keymap.set("n", "<space>i", function()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = 0 }, { bufnr = 0 })
 end)
 
+-- Stuff with buffers
 vim.keymap.set('n', '<leader>so', "<cmd>only<CR>zz")
+vim.keymap.set('n', '<leader>bdd', "<cmd>bd<CR>zz")
+vim.keymap.set('n', '<leader>bda', "<cmd>%bd<CR>zz")
 
 -- todo comments
 vim.keymap.set("n", "]t", function()
@@ -30,3 +33,5 @@ end, { desc = "Next todo comment" })
 vim.keymap.set("n", "[t", function()
 	require("todo-comments").jump_prev()
 end, { desc = "Previous todo comment" })
+
+vim.keymap.set("n", "<leader>tt", "<cmd>TodoQuickFix<CR>zz", { desc = "Previous todo comment" })
