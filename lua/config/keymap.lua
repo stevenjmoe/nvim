@@ -34,4 +34,4 @@ vim.keymap.set("n", "[t", function()
 	require("todo-comments").jump_prev()
 end, { desc = "Previous todo comment" })
 
-vim.keymap.set("n", "<leader>tt", "<cmd>TodoQuickFix<CR>zz", { desc = "Previous todo comment" })
+vim.keymap.set("n", "<leader>tt", "<cmd>TodoQuickFix<CR>zz")
