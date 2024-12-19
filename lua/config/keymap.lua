@@ -16,9 +16,9 @@ vim.keymap.set("n", "<leader>le", vim.diagnostic.setloclist)
 vim.keymap.set('n', '<C-Down>', "<cmd>cnext<CR>zz")
 vim.keymap.set('n', '<C-Up>', "<cmd>cprev<CR>zz")
 
-vim.keymap.set("n", "<space>i", function()
+vim.keymap.set("n", "<leader>i", function()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = 0 }, { bufnr = 0 })
-end)
+end, { desc = "Toggle inlay hint" })
 
 -- Stuff with buffers
 vim.keymap.set('n', '<leader>so', "<cmd>only<CR>zz")

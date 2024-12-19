@@ -18,27 +18,30 @@ dap.configurations.cs = {
 }
 
 -- keymaps
-vim.keymap.set('n', '<F5>', function() dap.continue() end)
-vim.keymap.set('n', '<F10>', function() dap.step_over() end)
-vim.keymap.set('n', '<F11>', function() dap.step_into() end)
-vim.keymap.set('n', '<F12>', function() dap.step_out() end)
-vim.keymap.set('n', '<Leader>db', function() dap.toggle_breakpoint() end)
-vim.keymap.set('n', '<Leader>dr', function() dap.repl.open() end)
-vim.keymap.set('n', '<Leader>dl', function() dap.run_last() end)
+vim.keymap.set('n', '<F5>', function() dap.continue() end, { desc = "DAP continue" })
+vim.keymap.set('n', '<F10>', function() dap.step_over() end, { desc = "DAP step over" })
+vim.keymap.set('n', '<F11>', function() dap.step_into() end, { desc = "DAP step into" })
+vim.keymap.set('n', '<F12>', function() dap.step_out() end, { desc = "DAP step out" })
+vim.keymap.set('n', '<Leader>db', function() dap.toggle_breakpoint() end, { desc = "Toggle breakpoint" })
+vim.keymap.set('n', '<Leader>dr', function() dap.repl.open() end, { desc = "DAP open repl" })
+vim.keymap.set('n', '<Leader>dl', function() dap.run_last() end, { desc = "DAP run last" })
 vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function()
 	require('dap.ui.widgets').hover()
-end)
+end, { desc = "DAP hover" })
+
 vim.keymap.set({ 'n', 'v' }, '<Leader>dp', function()
 	require('dap.ui.widgets').preview()
-end)
+end, { desc = "DAP preview" })
+
 vim.keymap.set('n', '<Leader>df', function()
 	local widgets = require('dap.ui.widgets')
 	widgets.centered_float(widgets.frames)
-end)
+end, { desc = "DAP frames" })
+
 vim.keymap.set('n', '<Leader>ds', function()
 	local widgets = require('dap.ui.widgets')
 	widgets.centered_float(widgets.scopes)
-end)
+end, { desc = "DAP scopes" })
 
 dapui.setup({
 	icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
@@ -80,4 +83,4 @@ dap.listeners.before.event_exited.dapui_config = function()
 end
 
 -- dapui keymaps
-vim.keymap.set({ 'v', 'n' }, '<Leader>de', function() dapui.eval() end)
+vim.keymap.set({ 'v', 'n' }, '<Leader>de', function() dapui.eval() end, { desc = "DAP eval" })
