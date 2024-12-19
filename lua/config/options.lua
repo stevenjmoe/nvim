@@ -8,6 +8,7 @@ vim.opt.smarttab = true
 vim.opt.cc = "80"
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
+vim.opt.hidden = false
 
 -- Ocaml specific settings
 --vim.opt.rtp:prepend("~/.opam/default/share/ocp-indent/vim")
