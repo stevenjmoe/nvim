@@ -24,6 +24,8 @@ end, { desc = "Toggle inlay hint" })
 vim.keymap.set('n', '<leader>so', "<cmd>only<CR>zz")
 vim.keymap.set('n', '<leader>bdd', "<cmd>bd<CR>zz")
 vim.keymap.set('n', '<leader>bda', "<cmd>%bd<CR>zz")
+vim.keymap.set('n', '<leader>bd.', "<cmd>%bd|e #|normal`\"<CR>zz",
+	{ desc = "Delete all but the current buffer and maintain position in buffer" })
 
 -- todo comments
 vim.keymap.set("n", "]t", function()
