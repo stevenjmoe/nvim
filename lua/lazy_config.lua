@@ -106,11 +106,6 @@ require("lazy").setup({
 
 		version = 'v0.*',
 		opts = {
-			-- 'default' for mappings similar to built-in completion
-			-- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
-			-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
-			-- see the "default configuration" section below for full documentation on how to define
-			-- your own keymap.
 			keymap = { preset = 'default' },
 
 			appearance = {
@@ -118,10 +113,25 @@ require("lazy").setup({
 				nerd_font_variant = 'mono'
 			},
 			sources = {
+				completion = {
+					enabled_providers = { "lsp", "path", "snippets", "buffer", "dadbod", },
+				},
+				providers = {
+					dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+				},
 				default = { 'lsp', 'path', 'snippets', 'buffer' },
+				cmdline = function()
+					local type = vim.fn.getcmdtype()
+					-- Search forward and backward
+					if type == '/' or type == '?' then return { 'buffer' } end
+					-- Commands
+					if type == ':' then return { 'cmdline' } end
+					return {}
+				end,
 			},
-
-			signature = { enabled = true }
+			documentation = { auto_show = true, auto_show_delay_ms = 500 },
+			signature = { enabled = true },
+			ghost_text = { enabled = true },
 		},
 	},
 	{
@@ -131,5 +141,26 @@ require("lazy").setup({
 		opts = {},
 		-- Optional dependencies
 		dependencies = { { "echasnovski/mini.icons", opts = {} } },
-	}
+	},
+	{ "tpope/vim-dadbod" },
+	{
+		'kristijanhusak/vim-dadbod-ui',
+		dependencies = {
+			{
+				'tpope/vim-dadbod',
+				lazy = true
+			},
+			{ 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true }, -- Optional
+		},
+		cmd = {
+			'DBUI',
+			'DBUIToggle',
+			'DBUIAddConnection',
+			'DBUIFindBuffer',
+		},
+		init = function()
+			-- Your DBUI configuration
+			vim.g.db_ui_use_nerd_fonts = 1
+		end,
+	},
 })
