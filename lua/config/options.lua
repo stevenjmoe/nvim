@@ -30,3 +30,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro rnu"
+
+vim.g.omni_sql_no_default_maps = 1
