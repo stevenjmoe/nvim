@@ -163,4 +163,14 @@ require("lazy").setup({
 			vim.g.db_ui_use_nerd_fonts = 1
 		end,
 	},
+	{
+		"epwalsh/obsidian.nvim",
+		version = "*",
+		lazy = true,
+		ft = "markdown",
+		dependencies = {
+			-- Required.
+			"nvim-lua/plenary.nvim",
+		},
+	}
 })
