@@ -172,5 +172,15 @@ require("lazy").setup({
 			-- Required.
 			"nvim-lua/plenary.nvim",
 		},
-	}
+	},
+	{
+		"folke/zen-mode.nvim",
+		opts = {
+		}
+	},
+	{
+		"folke/twilight.nvim",
+		opts = {
+		}
+	},
 })

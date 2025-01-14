@@ -5,9 +5,9 @@ require("obsidian").setup({
 			path = "~/obsidian/vaults/personal",
 			strict = true,
 		},
-		--	{
-		--		name = "work",
-		--		path = "~/obsidian/vaults/work",
-		--	},
 	},
+	notes_dir = "notes",
+	daily_notes = {
+		folder = "notes/dailies",
+	}
 })
