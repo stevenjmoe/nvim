@@ -89,6 +89,7 @@ local servers = {
 	},
 	fsautocomplete = {},
 	rescriptls = {},
+	zls = {},
 	-- omnisharp = {
 	-- 	cmd = {
 	-- 		"dotnet",
