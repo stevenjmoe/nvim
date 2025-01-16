@@ -90,6 +90,7 @@ local servers = {
 	fsautocomplete = {},
 	rescriptls = {},
 	zls = {},
+	marksman = {},
 	-- omnisharp = {
 	-- 	cmd = {
 	-- 		"dotnet",

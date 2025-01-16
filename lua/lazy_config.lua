@@ -102,7 +102,10 @@ require("lazy").setup({
 	},
 	{
 		'saghen/blink.cmp',
-		dependencies = 'rafamadriz/friendly-snippets',
+		dependencies = {
+			'rafamadriz/friendly-snippets',
+			{ "saghen/blink.compat", lazy = true, version = false },
+		},
 
 		version = 'v0.*',
 		opts = {
@@ -113,11 +116,33 @@ require("lazy").setup({
 				nerd_font_variant = 'mono'
 			},
 			sources = {
+				compat = { "obsidian", "obsidian_new", "obsidian_tags" },
 				completion = {
-					enabled_providers = { "lsp", "path", "snippets", "buffer", "dadbod", },
+					enabled_providers = {
+						"lsp",
+						"path",
+						"snippets",
+						"buffer",
+						"dadbod",
+						"obsidian",
+						"obsidian_new",
+						"obsidian_tags",
+					},
 				},
 				providers = {
 					dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+					obsidian = {
+						name = "obsidian",
+						module = "blink.compat.source",
+					},
+					obsidian_new = {
+						name = "obsidian_new",
+						module = "blink.compat.source",
+					},
+					obsidian_tags = {
+						name = "obsidian_tags",
+						module = "blink.compat.source",
+					},
 				},
 				default = { 'lsp', 'path', 'snippets', 'buffer' },
 				cmdline = function()
