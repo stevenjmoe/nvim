@@ -116,18 +116,16 @@ require("lazy").setup({
 				nerd_font_variant = 'mono'
 			},
 			sources = {
-				compat = { "obsidian", "obsidian_new", "obsidian_tags" },
-				completion = {
-					enabled_providers = {
-						"lsp",
-						"path",
-						"snippets",
-						"buffer",
-						"dadbod",
-						"obsidian",
-						"obsidian_new",
-						"obsidian_tags",
-					},
+				-- compat = { "obsidian", "obsidian_new", "obsidian_tags" },
+				default = {
+					"lsp",
+					"path",
+					"snippets",
+					"buffer",
+					"dadbod",
+					"obsidian",
+					"obsidian_new",
+					"obsidian_tags",
 				},
 				providers = {
 					dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
@@ -144,8 +142,12 @@ require("lazy").setup({
 						module = "blink.compat.source",
 					},
 				},
-				default = { 'lsp', 'path', 'snippets', 'buffer' },
-				cmdline = function()
+			},
+			signature = { enabled = true },
+			cmdline = {
+				enabled = true,
+				keymap = nil,
+				sources = function()
 					local type = vim.fn.getcmdtype()
 					-- Search forward and backward
 					if type == '/' or type == '?' then return { 'buffer' } end
@@ -153,10 +155,7 @@ require("lazy").setup({
 					if type == ':' then return { 'cmdline' } end
 					return {}
 				end,
-			},
-			documentation = { auto_show = true, auto_show_delay_ms = 500 },
-			signature = { enabled = true },
-			ghost_text = { enabled = true },
+			}
 		},
 	},
 	{
@@ -232,5 +231,5 @@ require("lazy").setup({
 			{ "<leader>vv", "<cmd>LoveRun<cr>",  ft = "lua",   desc = "Run LÖVE" },
 			{ "<leader>vs", "<cmd>LoveStop<cr>", ft = "lua",   desc = "Stop LÖVE" },
 		},
-	}
+	},
 })
