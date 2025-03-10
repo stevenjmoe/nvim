@@ -188,16 +188,6 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"epwalsh/obsidian.nvim",
-		version = "*",
-		lazy = true,
-		ft = "markdown",
-		dependencies = {
-			-- Required.
-			"nvim-lua/plenary.nvim",
-		},
-	},
-	{
 		"folke/zen-mode.nvim",
 		opts = {
 		}
