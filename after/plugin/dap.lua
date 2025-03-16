@@ -14,6 +14,12 @@ dap.configurations.cs = {
 		program = function()
 			return vim.fn.input('Path to dll: ', vim.fn.getcwd(), 'file')
 		end,
+	},
+	{
+		type = "cs",
+		name = "attach - netcoredbg",
+		request = "attach",
+		processId = '${command:pickProcess}'
 	}
 }
 
