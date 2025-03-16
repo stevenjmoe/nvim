@@ -87,7 +87,6 @@ local servers = {
 	omnisharp = {
 		cmd = { "dotnet", "/home/steven/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp.dll" }
 	},
-	fsautocomplete = {},
 	rescriptls = {},
 	zls = {},
 	marksman = {},

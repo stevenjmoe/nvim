@@ -19,6 +19,8 @@ dap.configurations.cs = {
 
 -- keymaps
 vim.keymap.set('n', '<F5>', function() dap.continue() end, { desc = "DAP continue" })
+vim.keymap.set('n', '<F1>', function() dap.restart() end, { desc = "DAP restart" })
+vim.keymap.set('n', '<F2>', function() dap.terminate() end, { desc = "DAP terminate" })
 vim.keymap.set('n', '<F10>', function() dap.step_over() end, { desc = "DAP step over" })
 vim.keymap.set('n', '<F11>', function() dap.step_into() end, { desc = "DAP step into" })
 vim.keymap.set('n', '<F12>', function() dap.step_out() end, { desc = "DAP step out" })
