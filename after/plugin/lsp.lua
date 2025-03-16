@@ -130,6 +130,7 @@ for name, config in pairs(servers) do
 	}, config)
 
 	require('lspconfig')[name].setup(config)
+	require('lspconfig').gleam.setup({})
 end
 
 local disable_semantic_tokens = {
