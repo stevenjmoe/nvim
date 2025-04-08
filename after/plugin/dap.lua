@@ -22,6 +22,31 @@ dap.configurations.cs = {
 		processId = '${command:pickProcess}'
 	}
 }
+dap.adapters.ocamlearlybird = {
+	type = 'executable',
+	command = 'ocamlearlybird',
+	args = { 'debug' }
+}
+dap.configurations.ocaml = {
+	{
+		name = 'OCaml Debug test.bc',
+		type = 'ocamlearlybird',
+		request = 'launch',
+		program = '${workspaceFolder}/_build/default/test/test.bc',
+	},
+	{
+		name = 'OCaml Debug main.bc',
+		type = 'ocamlearlybird',
+		request = 'launch',
+		program = '${workspaceFolder}/_build/default/bin/main.bc',
+	},
+	{
+		name = 'OCaml Debug debug.bc',
+		type = 'ocamlearlybird',
+		request = 'launch',
+		program = '${workspaceFolder}/_build/default/debug/debug.bc',
+	},
+}
 
 -- keymaps
 vim.keymap.set('n', '<F5>', function() dap.continue() end, { desc = "DAP continue" })

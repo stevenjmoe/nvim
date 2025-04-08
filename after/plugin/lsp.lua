@@ -98,6 +98,7 @@ local servers = {
 	-- 		"--languageserver",
 	-- 	},
 	-- },
+	angularls = {},
 }
 
 local ensure_installed = {
@@ -144,7 +145,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have valid client")
 
 		if client.server_capabilities.inlayHintProvider then
-			vim.lsp.inlay_hint.enable(true)
+			vim.lsp.inlay_hint.enable(false)
 		end
 
 		local settings = servers[client.name]
