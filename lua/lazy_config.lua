@@ -222,5 +222,4 @@ require("lazy").setup({
 			{ "<leader>vs", "<cmd>LoveStop<cr>", ft = "lua",   desc = "Stop LÖVE" },
 		},
 	},
-	{ "supermaven-inc/supermaven-nvim" },
 })
