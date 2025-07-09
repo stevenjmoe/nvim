@@ -213,13 +213,10 @@ require("lazy").setup({
 		}
 	},
 	{
-		"S1M0N38/love2d.nvim",
-		cmd = "LoveRun",
+		'MeanderingProgrammer/render-markdown.nvim',
+		dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
 		opts = {},
-		keys = {
-			{ "<leader>v",  ft = "lua",          desc = "LÖVE" },
-			{ "<leader>vv", "<cmd>LoveRun<cr>",  ft = "lua",   desc = "Run LÖVE" },
-			{ "<leader>vs", "<cmd>LoveStop<cr>", ft = "lua",   desc = "Stop LÖVE" },
-		},
-	},
+	}
 })

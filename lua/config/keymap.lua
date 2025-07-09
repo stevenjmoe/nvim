@@ -37,3 +37,11 @@ vim.keymap.set("n", "[t", function()
 end, { desc = "Previous todo comment" })
 
 vim.keymap.set("n", "<leader>tt", "<cmd>TodoQuickFix<CR>zz")
+
+vim.keymap.set("n", "<leader>tw", function()
+	require("twilight").toggle()
+end, { desc = "Toggle twilight" })
+
+vim.keymap.set("n", "<leader>tz", function()
+	require("zen-mode").toggle()
+end, { desc = "Toggle zen mode" })
