@@ -12,6 +12,42 @@ configs.setup({
 				["af"] = "@function.outer",
 				["if"] = "@function.inner",
 			},
-		}
+		},
+		move = {
+			enable = true,
+			set_jumps = true,
+			goto_next_start = {
+				["]f"] = "@function.outer",
+				["]]"] = { query = "@class.outer", desc = "Next class start" },
+				["]o"] = "@loop.*",
+				["]s"] = { query = "@local.scope", query_group = "locals", desc = "Next scope" },
+				["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+			},
+			goto_next_end = {
+				["]F"] = "@function.outer",
+				["]["] = "@class.outer",
+			},
+			goto_previous_start = {
+				["[f"] = "@function.outer",
+				["[["] = "@class.outer",
+				["[s"] = { query = "@local.scope", query_group = "locals", desc = "Previous scope" },
+				["[z"] = { query = "@fold", query_group = "folds", desc = "Previous fold" },
+			},
+			goto_previous_end = {
+				["[F"] = "@function.outer",
+				["[]"] = "@class.outer",
+			},
+			goto_next = {
+				["]c"] = "@conditional.outer",
+			},
+			goto_previous = {
+				["[c"] = "@conditional.outer",
+			}
+		},
 	},
 })
+
+local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
+
+vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
+vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
