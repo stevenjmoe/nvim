@@ -99,6 +99,7 @@ local servers = {
 	-- 	},
 	-- },
 	angularls = {},
+	clangd = {},
 }
 
 local ensure_installed = {

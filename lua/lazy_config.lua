@@ -27,7 +27,8 @@ require("lazy").setup({
 		dependencies = { 'nvim-lua/plenary.nvim' }
 	},
 
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{ "nvim-treesitter/nvim-treesitter",            build = ":TSUpdate" },
+	{ "nvim-treesitter/nvim-treesitter-textobjects" },
 
 	-- git
 	{ 'tpope/vim-fugitive' },
@@ -218,5 +219,5 @@ require("lazy").setup({
 		---@module 'render-markdown'
 		---@type render.md.UserConfig
 		opts = {},
-	}
+	},
 })
