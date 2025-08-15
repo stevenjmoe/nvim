@@ -38,6 +38,27 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	end,
 })
 
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	desc = "Keymaps for markdown files",
+	callback = function()
+		vim.keymap.set("n", "<leader>td", function()
+			local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
+			local line = vim.api.nvim_get_current_line()
+
+			if line:match("%S") then
+				vim.api.nvim_buf_set_lines(0, row, row, true, { "" })
+				row = row + 1
+			end
+
+			vim.api.nvim_buf_set_text(0, row - 1, 0, row - 1, 0, { "- [ ] " })
+			vim.api.nvim_win_set_cursor(0, { row, 6 })
+			vim.cmd("startinsert!")
+		end, { silent = true, desc = "Insert TODO check box" })
+	end
+})
+
 vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro rnu"
 
 vim.g.omni_sql_no_default_maps = 1
