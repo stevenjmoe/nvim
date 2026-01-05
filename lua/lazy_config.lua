@@ -72,9 +72,6 @@ require("lazy").setup({
 			"neovim/nvim-lspconfig",
 		},
 		ft = { "fsharp" },
-		build = function()
-			vim.fn.system({ "dotnet", "tool", "install", "--global", "fsautocomplete" })
-		end,
 	},
 	{
 		'rescript-lang/vim-rescript',
@@ -108,6 +105,9 @@ require("lazy").setup({
 		version = 'v0.*',
 		opts = {
 			keymap = { preset = 'default' },
+			fuzzy = {
+				implementation = 'lua',
+			},
 
 			appearance = {
 				use_nvim_cmp_as_default = true,
@@ -158,10 +158,7 @@ require("lazy").setup({
 	},
 	{
 		'stevearc/oil.nvim',
-		---@module 'oil'
-		---@type oil.SetupOpts
 		opts = {},
-		-- Optional dependencies
 		dependencies = { { "echasnovski/mini.icons", opts = {} } },
 	},
 	{ "tpope/vim-dadbod" },
