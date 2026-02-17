@@ -38,10 +38,10 @@ configs.setup({
 				["[]"] = "@class.outer",
 			},
 			goto_next = {
-				["]c"] = "@conditional.outer",
+				["]j"] = "@conditional.outer",
 			},
 			goto_previous = {
-				["[c"] = "@conditional.outer",
+				["[j"] = "@conditional.outer",
 			}
 		},
 	},
